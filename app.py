@@ -11,8 +11,7 @@ from dotenv import load_dotenv
 
 
 ## APP setup
-app = Flask(__name__, static_folder='static', template_folder='templates')
-
+app = Flask(__name__)
 
 
 #URLs for APIs
@@ -160,8 +159,8 @@ class My_Tools(db.Model):
 if __name__ in "__main__":
     with app.app_context():
         db.create_all()
-    port = int(os.environ.get("PORT", 6005))
-    app.run(host='0.0.0.0', port=port, debug=True)
+    port = int(os.environ.get("PORT",6005))
+    app.run(host='0.0.0.0', port=port, debug=False)
 
 
 
