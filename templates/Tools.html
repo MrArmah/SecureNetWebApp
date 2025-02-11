@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Make sure the viewport meta tag is included -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tools & Resources</title>
+  <link rel="stylesheet" href="../static/Styles/Tools.css">
+</head>
+<body>
+  <!-- Responsive Navbar Toggle (always at the top) -->
+  <input type="checkbox" id="nav-toggle" class="nav-toggle">
+  <label for="nav-toggle" class="nav-toggle-label">&#9776;</label>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="{{ url_for('Home')}}" class="{% if request.endpoint == 'Home' %}active{% endif %}">Home</a></li>
+      <li><a href="{{ url_for('Tools')}}" class="{% if request.endpoint == 'Tools' %}active{% endif %}">Tools & Resources</a></li>
+      <li><a href="{{ url_for('News')}}" class="{% if request.endpoint == 'News' %}active{% endif %}">News & Updates</a></li>
+      <li><a href="{{ url_for('Security')}}" class="{% if request.endpoint == 'Security' %}active{% endif %}">Security Policies</a></li>
+      <li><a href="{{ url_for('Chat')}}" class="{% if request.endpoint == 'Chat' %}active{% endif %}">AI</a></li>
+    </ul>
+  </nav>
+
+  <div class="content-wrapper">
+    <header>
+      <h1>Tools & Resources</h1>
+      <p>Explore a curated collection of tools and resources for secure networking.</p>
+      <!-- Search Form inside header -->
+      <form action="{{ url_for('Tools') }}" method="get" class="search-form">
+        <input type="text" name="search" placeholder="Search Tool..." value="{{ search_query or '' }}">
+        <button type="submit">Search</button>
+      </form>
+    </header>
+    <main>
+      <!-- Wrap the table in a container for horizontal scrolling -->
+      <div class="table-container">
+        <table class="tools-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Tool Name</th>
+              <th>Description</th>
+              <th>Application</th>
+              <th>Image</th>
+              <th>Download</th>
+              <th>Visit Site</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if items %}
+              {% for item in items %}
+                <tr>
+                  <td scope="col">{{ item.id }}</td>
+                  <td scope="col">{{ item.Name }}</td>
+                  <td scope="col">{{ item.Description }}</td>
+                  <td scope="col">{{ item.Application }}</td>
+                  <td>
+                    <img class="image" src="{{ url_for('static', filename='images/' + item.Image) }}" alt="Tool image">
+                  </td>
+                  <td>
+                    <a href="{{ item.Download }}" download>
+                      <button class="Download-btn">Download</button>
+                    </a>
+                  </td>
+                  <td>
+                    <a href="{{ item.Visit_site }}" target="_blank">
+                      <button class="Download-btn">Visit</button>
+                    </a>
+                  </td>
+                </tr>
+              {% endfor %}
+            {% else %}
+              <p class="no-results">No results found for "{{ search_query }}".</p>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+      
+      <section class="resources-section">
+        <h2>Resources</h2>
+        <p>Secure Technical Implementation Guide (STIG)</p>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 SecureNet | Tools & Resources</p>
+    </div>
+  </footer>
+</body>
+</html>

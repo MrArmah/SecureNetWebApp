@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Ensure the viewport is set for responsiveness -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News & Updates</title>
+  <link rel="stylesheet" href="../static/styles/News.css">
+</head>
+<body>
+  <!-- Responsive Navbar Toggle -->
+  <input type="checkbox" id="nav-toggle" class="nav-toggle">
+  <label for="nav-toggle" class="nav-toggle-label">&#9776;</label>
+  
+  <!-- Navbar -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="{{ url_for('Home')}}" class="{% if request.endpoint == 'Home' %}active{% endif %}">Home</a></li>
+      <li><a href="{{ url_for('Tools')}}" class="{% if request.endpoint == 'Tools' %}active{% endif %}">Tools & Resources</a></li>
+      <li><a href="{{ url_for('News')}}" class="{% if request.endpoint == 'News' %}active{% endif %}">News & Updates</a></li>
+      <li><a href="{{ url_for('Security')}}" class="{% if request.endpoint == 'Security' %}active{% endif %}">Security Policies</a></li>
+      <li><a href="{{ url_for('Chat')}}" class="{% if request.endpoint == 'Chat' %}active{% endif %}">AI</a></li>
+    </ul>
+  </nav>
+  
+  <div class="content-wrapper">
+    <header>
+      <h1>News & Updates</h1>
+      <p>Stay informed about the latest developments in secure networking.</p>
+    </header>
+    <main>
+      <section class="page-content">
+        <section class="articles">
+          {% for article in news %}
+          <article class="news-item">
+            <h2>{{ article.title }}</h2>
+            <p class="date">{{ article.author }}</p>
+            <p>{{ article.publishedAt if article.publishedAt else "No date available" }}</p>
+            <p class="excerpt">{{ article.description if article.description else "No description available" }}</p>
+            <a href="{{ article.url }}" target="_blank">Read More &rarr;</a>
+          </article>
+          {% endfor %}
+        </section>
+      </section>
+    </main>
+  </div>
+  
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 SecureNet | News & Updates</p>
+    </div>
+  </footer>
+</body>
+</html>

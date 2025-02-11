@@ -1,0 +1,319 @@
+/* ===============================
+   General Styles
+=============================== */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f0ffe6;
+    color: #3d5c2c;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content-wrapper {
+    flex: 1;
+}
+
+/* ===============================
+   Navbar & Toggle Elements
+=============================== */
+.navbar {
+    background-color: #3d5c2c;
+    color: white;
+    padding: 0.7rem 0;
+    position: sticky;
+    top: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    animation: slideDown 1s ease-out;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+.navbar li {
+    margin: 0 1rem;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out, transform 0.3s ease;
+  }
+
+.navbar a:hover {
+    color: #99cc00;
+}
+
+/* Active page indicator */
+.active::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #cae677;
+    position: relative;
+    top: 5px;
+}
+
+/* Hide the toggle checkbox (used only for CSS toggling) */
+.nav-toggle {
+    display: none;
+}
+
+/* Toggle label (hamburger icon) styling */
+.nav-toggle-label {
+    display: none;
+}
+
+/* ===============================
+   Header & Search Form
+=============================== */
+header {
+    text-align: center;
+    padding: 2rem;
+    background-color: #cce8b3;
+    animation: fadeIn 2s ease-in-out;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+header p {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+}
+
+/* Search form inside header */
+.search-form {
+    margin: 1rem auto 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.search-form input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-form button {
+    padding: 10px 12px;
+    border: none;
+    background: linear-gradient(to right, #86be67, #d3f1b9, #86be67);
+    color: #3d5c2c;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.search-form button:hover {
+    background-color: #3d5c2c;
+}
+
+.no-results {
+    text-align: center;
+    font-size: 18px;
+    color: red;
+    margin-top: 20px;
+}
+
+/* ===============================
+   Table & Resources
+=============================== */
+
+/* Container for horizontal scrolling */
+.table-container {
+    overflow-x: auto;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+
+.tools-table {
+    width: 100%;
+    min-width: 600px; /* Adjust if needed */
+    border-collapse: collapse;
+    margin: 0 auto;
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tools-table th,
+.tools-table td {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    text-align: left;
+    word-wrap: break-word;
+}
+
+.tools-table th {
+    background: #3d5c2c;
+    color: white;
+    font-weight: bold;
+}
+
+.tools-table td {
+    color: #3d5c2c;
+}
+
+.tools-table tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+.tools-table tr:hover {
+    background: #e2e8f0;
+    transition: background 0.3s ease;
+}
+
+.resources-section {
+    margin-top: 2rem;
+}
+
+/* ===============================
+   Button Styling
+=============================== */
+.Download-btn {
+    background: linear-gradient(to right, #86be67, #d3f1b9);
+    color: #3d5c2c;
+    border: none;
+    padding: 10px 15px;
+    font-size: 10px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    text-transform: uppercase;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.Download-btn:hover {
+    background: linear-gradient(to right, #eaffd8, #98cc7c);
+    box-shadow: 0 6px 12px rgba(0, 232, 182, 0.5);
+    transform: translateY(-2px);
+}
+
+.Download-btn:active {
+    transform: scale(0.95);
+}
+
+.image {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+}
+
+/* ===============================
+   Footer
+=============================== */
+footer {
+    background-color: #3d5c2c;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto;
+}
+
+/* ===============================
+   Keyframe Animations
+=============================== */
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ===============================
+   Responsive Styles
+=============================== */
+
+/* Tablets & Small Laptops (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    /* Force the hamburger toggle label to display with the provided styling */
+    .nav-toggle-label {
+        display: block !important;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 10001; /* Above the menu */
+        background: #3d5c2c;
+        padding: 0.7rem 1rem;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: white !important; /* White icon */
+    }
+    /* Hide the navbar menu by default; display it as a column when toggled */
+    .navbar ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #3d5c2c;
+    }
+    /* When the toggle is checked, show the menu */
+    .nav-toggle:checked + .nav-toggle-label + .navbar ul {
+        display: flex;
+    }
+    .navbar a {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+    /* Add top padding to the content so it isn’t hidden by the fixed elements */
+    .content-wrapper {
+        padding-top: 70px; /* Adjust based on your navbar height */
+    }
+}
+
+/* Smartphones (max-width: 480px) */
+@media screen and (max-width: 480px) {
+    .navbar ul {
+        flex-direction: column;
+    }
+    .navbar li {
+        margin: 0.5rem 0;
+    }
+    header {
+        padding: 2rem 1rem;
+    }
+    header h1 {
+        font-size: 2rem;
+    }
+    header p {
+        font-size: 1rem;
+    }
+    main {
+        padding: 1rem;
+    }
+    .tools-table th,
+    .tools-table td {
+        padding: 0.8rem;
+    }
+    .search-form {
+        margin: 1rem auto;
+        justify-content: center;
+    }
+}

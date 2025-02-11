@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secured Networks Information</title>
+    <link rel="stylesheet" href="../static/styles/Home.css">
+</head>
+<body>
+  <!-- Toggle for Responsive Navbar -->
+  <!-- The checkbox is hidden by default via CSS, and the label (hamburger icon) will be visible on small screens -->
+  <input type="checkbox" id="nav-toggle" class="nav-toggle">
+  <label for="nav-toggle" class="nav-toggle-label">&#9776;</label>
+  
+  <!-- Navbar -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="{{ url_for('Home')}}" class="{% if request.endpoint == 'Home' %}active{% endif %}">Home</a></li>
+      <li><a href="{{ url_for('Tools')}}" class="{% if request.endpoint == 'Tools' %}active{% endif %}">Tools & Resources</a></li>
+      <li><a href="{{ url_for('News')}}" class="{% if request.endpoint == 'News' %}active{% endif %}">News & Updates</a></li>
+      <li><a href="{{ url_for('Security')}}" class="{% if request.endpoint == 'Security' %}active{% endif %}">Security Policies</a></li>
+      <li><a href="{{ url_for('Chat')}}" class="{% if request.endpoint == 'Chat' %}active{% endif %}">AI</a></li>
+    </ul>
+  </nav>
+  
+  
+    <!-- Main Content -->
+    <header class="hero">
+        <h1>SecureNet</h1>
+        <p>Your Trusted Guide to Secure Networking🛜</p>
+    </header>
+    
+    <!-- Background Video Section -->
+    <section class="video-section">
+        <br>
+        <br>
+        <video autoplay muted loop class="background-video">
+            <source src="{{ url_for('static', filename='videos/Home_Page.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <br>
+        <br>
+        <br>
+        <div class="content">
+          <div class="int-card" >
+            <h2>INTRODUCTION</h1>
+              <h4>Protecting Your Digital World with SecureNet</h4>
+              <h3>
+                In today’s digital era, cybersecurity is essential. With evolving threats like phishing, ransomware, and AI-driven attacks, securing your network is more critical than ever. <br>
+                SecureNet provides expert insights, best practices, and real-time updates to help individuals and businesses stay protected. <br>
+                <br>Stay ahead with our latest updates on emerging technologies, cybersecurity news, and industry trends, ensuring your networks remain safe, efficient, and resilient.
+              </h3>
+              <h3>
+                Stay ahead with breaking cybersecurity news, emerging technologies like AI and blockchain security, and practical strategies for safeguarding your data
+              </h3>
+          </div>
+  
+          <div class="int-card" >
+            <h2>AI ASSISTANT</h2>
+              <h4>Meet Your SecureNet AI Assistant 🤖</h4>
+              <h3>
+                Navigating the world of secure networks can be challenging, but you’re not alone! SecureNet provides a minstrel-trained AI bot designed to answer your questions,
+                 offer expert guidance, and help you implement the best security practices for your network.
+              </h3>
+              <h3>
+                Whether you need advice on firewall configurations, encryption techniques, network security protocols, or emerging cybersecurity threats, 
+                our AI Assistant is here to assist you in real-time.
+              </h3>
+              <h3>
+                🔹 Ask questions. <br>🔹 Get instant solutions. <br>🔹 Stay updated on secure network trends.
+              </h3>
+              <br>
+              <a href="{{ url_for('Chat')}}">
+                <button class="cta-btn">👉 Chat with SecureNet AI</button>
+              </a>
+          </div>
+  
+          <div class="int-card" >
+            <h2>THE FUTURE OF SECURE NETWORKING🔮</h2>
+            <h3>
+              The future of secure networking is being shaped by cutting-edge technologies such as AI-driven cybersecurity, 
+              blockchain-based security models, and quantum encryption—each playing a crucial role in transforming how we protect digital assets.
+            </h3>
+            <h3>
+              As we move into an era of hyper-connectivity and automation, securing networks will be more critical than ever. Future innovations may include: <br>
+              🔹Self-healing networks that can automatically recover from cyberattacks. <br> 🔹AI-enhanced penetration testing to simulate real-world cyber threats. <br>
+              🔹Biometric-based authentication for ultra-secure access control. <br>
+              The future of secure networking lies in a combination of AI, blockchain, and quantum technology, working together to build next-generation cybersecurity frameworks. <br> Are you prepared for the future of cybersecurity? Stay informed with SecureNet and explore the latest advancements to keep your digital world protected.🔐
+            </h3>
+          </div>
+      </div>
+  
+         
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About</h3>
+                <p>SecureNet is dedicated to providing the latest insights and resources on secure networking.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: support@SECURENETWORKS.Local</p>
+                <p>Phone: +233 </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 SecureNet | All Rights Reserved
+        </div>
+    </footer>
+</body>
+</html>

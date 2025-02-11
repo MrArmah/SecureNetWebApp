@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorials</title>
+    <link rel="stylesheet" href="../static/styles/tutorial.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{{ url_for('Home')}}" class="{% if request.endpoint == 'home' %}active{% endif %}" >Home</a></li>
+            <li><a href="{{ url_for('Tools')}}" class="{% if request.endpoint == 'Tools' %}active{% endif %}">Tools & Resources</a></li>
+            <li><a href="{{ url_for('News')}}" class="{% if request.endpoint == 'News' %}active{% endif %}">News & Updates</a></li>
+            <li><a href="{{ url_for('Security')}}" class="{% if request.endpoint == 'Security' %}active{% endif %}">Security Policies</a></li>
+        </ul>
+    </nav>
+    <div class="content-wrapper">
+        <header>
+            <h1>Tutorials</h1>
+            <p>Step-by-step guides for mastering secure networks.</p>
+        </header>
+        <main>
+            <section class="video-tutorials">
+                <h2>Video Tutorials</h2>
+                <p>Placeholder for embedded videos.</p>
+                <div class="video-placeholder">[Video Placeholder]</div>
+            </section>
+            <section class="text-guides">
+                <h2>Text-Based Guides</h2>
+                <p>Placeholder for text tutorials and downloadable PDFs.</p>
+                <div class="file-placeholder">[PDF Placeholder]</div>
+            </section>
+        </main>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 SecureNet | Tutorials</p>
+        </div>
+    </footer>
+</body>
+</html>

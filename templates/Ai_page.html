@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Set the viewport for responsiveness -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Assistant</title>
+  <link rel="stylesheet" href="../static/styles/Ai_page.css">
+</head>
+<body>
+
+  <div class="overlay"></div> <!-- Overlay for better readability -->
+
+  <!-- Responsive Navbar Toggle -->
+  <input type="checkbox" id="nav-toggle" class="nav-toggle">
+  <label for="nav-toggle" class="nav-toggle-label">&#9776;</label>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="{{ url_for('Home')}}" class="{% if request.endpoint == 'Home' %}active{% endif %}">Home</a></li>
+      <li><a href="{{ url_for('Tools')}}" class="{% if request.endpoint == 'Tools' %}active{% endif %}">Tools & Resources</a></li>
+      <li><a href="{{ url_for('News')}}" class="{% if request.endpoint == 'News' %}active{% endif %}">News & Updates</a></li>
+      <li><a href="{{ url_for('Security')}}" class="{% if request.endpoint == 'Security' %}active{% endif %}">Security Policies</a></li>
+      <li><a href="{{ url_for('Chat')}}" class="{% if request.endpoint == 'Chat' %}active{% endif %}">Chat</a></li>
+    </ul>
+  </nav>
+
+  <section>
+    <video autoplay muted loop id="background-video">
+      <source src="{{ url_for('static', filename='videos/networks5u.mp4') }}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    
+    <div class="chat-container">
+      <h2>AI Assistant</h2>
+      <div class="chat-box">
+        {% if chat_history %}
+          {% for message in chat_history %}
+            {% if message.role == "user" %}
+              <div class="message user-message">
+                <p>{{ message.content }}</p>
+              </div>
+            {% else %}
+              <div class="message ai-message">
+                <p>{{ message.content }}</p>
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          <p>No messages yet. Start a conversation!</p>
+        {% endif %}
+      </div>
+
+      <form method="POST" action="{{ url_for('Chat') }}">
+        <input type="text" name="message" placeholder="Ask me anything..." required>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 AI Assistant. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

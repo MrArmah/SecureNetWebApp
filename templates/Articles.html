@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles</title>
+    <link rel="stylesheet" href="../static/styles/articles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{{ url_for('Home')}}" class="{% if request.endpoint == 'home' %}active{% endif %}" >Home</a></li>
+            <li><a href="{{ url_for('Tools')}}" class="{% if request.endpoint == 'Tools' %}active{% endif %}">Tools & Resources</a></li>
+            <li><a href="{{ url_for('News')}}" class="{% if request.endpoint == 'News' %}active{% endif %}">News & Updates</a></li>
+            <li><a href="{{ url_for('Security')}}" class="{% if request.endpoint == 'Security' %}active{% endif %}">Security Policies</a></li>
+        </ul>
+    </nav>
+    </nav>
+    <div class="content-wrapper">
+        <header>
+            <h1>Articles</h1>
+            <p>In-depth articles on network security best practices and technologies.</p>
+        </header>
+        <main>
+            <section class="article-preview">
+                <h2>Understanding Secure Networking</h2>
+                <p class="summary">This article explains the fundamentals of secure networking, covering topics such as encryption, VPNs, and firewalls to protect sensitive data in transit.</p>
+                <a href="#" class="read-more">Read Full Article</a>
+            </section>
+            <section class="article-preview">
+                <h2>Encryption Algorithms for Data Protection</h2>
+                <p class="summary">An overview of common encryption algorithms used to secure data, including AES, RSA, and ECC. Learn how they work and their application in modern security systems.</p>
+                <a href="#" class="read-more">Read Full Article</a>
+            </section>
+          
+
+        </main>
+    </div>
+    <footer>
+        <div class="footer">
+            <p>&copy; 2025 SecureNet | Articles</p>
+        </div>
+    </footer>
+</body>
+</html>

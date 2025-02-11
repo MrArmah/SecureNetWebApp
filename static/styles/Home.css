@@ -1,0 +1,430 @@
+/* ===============================
+   General Styles
+=============================== */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background-color: #f0ffe6;
+  color: #3d5c2c; 
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}
+
+
+/* Content Wrapper */
+.content-wrapper {
+  flex: 1;
+  position: relative;
+  z-index: 2;
+}
+
+/* ===============================
+ Navbar
+=============================== */
+.navbar {
+  background-color: #3d5c2c; 
+  color: white;
+  padding: 0.7rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  animation: slideDown 1s ease-out;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  margin: 0 1rem;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out, transform 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #99cc00; 
+  transform: scale(1.1);
+}
+
+.active::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #a6c547;
+  position: relative;
+  top: 5px;
+}
+
+/* Toggle elements for small screens */
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle-label {
+  display: none;  /* Will be shown via media query */
+  cursor: pointer;
+  background: #3d5c2c;
+  padding: 0.5rem 1rem;
+  color: white;
+  font-size: 1.5rem;
+}
+
+/* ===============================
+ Hero Section
+=============================== */
+.hero {
+  background: linear-gradient(135deg, #a6c547, #acd489, #a6c547);
+  color: #3d5c2c;
+  text-align: center;
+  padding: 4rem 2rem;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+/* ===============================
+ Content Section
+=============================== */
+.content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #1e40af;
+}
+
+.card h3 {
+  color: rgb(63, 63, 63);
+  font-size: 1rem;
+  font-weight: normal;
+  text-align: left;
+}
+
+.card h4 {
+  color: rgb(63, 63, 63);
+  font-size: 1.5rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* ===============================
+ Video Section
+=============================== */
+.video-section {
+  position: relative;
+  width: 100%;
+  height: 965px;
+  overflow: hidden;
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* ===============================
+ Button Styling
+=============================== */
+.cta-btn {
+  background: linear-gradient(to right, #0077b6, #00a8e8); /* Sea-blue gradient */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  text-transform: uppercase;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.cta-btn:hover {
+  background: linear-gradient(to right, #00a8e8, #0077b6);
+  box-shadow: 0 6px 12px rgba(0, 168, 232, 0.5);
+  transform: translateY(-2px);
+}
+
+.cta-btn:active {
+  transform: scale(0.95);
+}
+
+/* ===============================
+ Introduction Styling
+=============================== */
+.int-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.int-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.int-card h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #02485e;
+}
+
+.int-card h3 {
+  color: rgb(63, 63, 63);
+  font-size: 1rem;
+  font-weight: normal;
+  text-align: justify;
+}
+
+/* ===============================
+ Footer
+=============================== */
+footer {
+  background-color: #3d5c2c;
+  color: white;
+  padding: 1.2rem 1rem;
+  margin-top: auto;
+  animation: fadeIn 2s ease-in-out;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.footer-section h3 {
+  border-bottom: 2px solid #99cc00;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin: 0.5rem 0;
+  transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-section ul li:hover {
+  color: #99cc00;
+  padding-left: 10px;
+}
+
+.footer-section ul a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 0.8rem 0;
+  background-color: #3d5c2c;
+  font-size: 0.9rem;
+}
+
+/* ===============================
+ Animations
+=============================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===============================
+ Responsive Styles
+=============================== */
+
+/* Tablets & Small Laptops */
+@media screen and (max-width: 768px) {
+  /* Show hamburger toggle and hide navbar links by default */
+  .nav-toggle-label {
+    display: block !important;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 10001; /* Ensure it stays above the dropdown */
+    background: #3d5c2c;
+    padding: 0.7rem 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white; /* Set the hamburger icon color to white */
+}
+
+  .navbar ul {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background-color: #3d5c2c;
+  }
+  /* When the toggle is checked, show the nav menu */
+  .nav-toggle:checked + .nav-toggle-label + .navbar ul {
+      display: flex;
+  }
+  
+  .navbar a {
+      font-size: 0.9rem;
+      padding: 0.5rem;
+  }
+  
+  .hero {
+      padding: 3rem 1.5rem;
+  }
+  
+  .hero h1 {
+      font-size: 2rem;
+  }
+  
+  .hero p {
+      font-size: 1rem;
+  }
+  
+  .content {
+      padding: 1.5rem;
+      gap: 1.5rem;
+  }
+  
+  .card, .int-card {
+      padding: 1rem;
+  }
+  
+  .video-section {
+      height: 600px; /* Reduced height on tablets */
+  }
+  
+  .cta-btn {
+      padding: 8px 16px;
+      font-size: 16px;
+  }
+  
+  footer {
+      padding: 1rem;
+  }
+}
+
+/* Smartphones */
+@media screen and (max-width: 480px) {
+  .navbar ul {
+      flex-direction: column;
+  }
+  
+  .navbar li {
+      margin: 0.5rem 0;
+  }
+  
+  .hero {
+      padding: 2rem 1rem;
+  }
+  
+  .hero h1 {
+      font-size: 1.8rem;
+  }
+  
+  .hero p {
+      font-size: 0.9rem;
+  }
+  
+  .content {
+      grid-template-columns: 1fr; /* Single column layout */
+      padding: 1rem;
+      gap: 1rem;
+  }
+  
+  .card, .int-card {
+      padding: 0.8rem;
+  }
+  
+  /* Remove fixed height so all content in the video section is visible */
+  .video-section {
+      height: auto;
+      min-height: 400px;
+      padding-bottom: 2rem;  /* Extra spacing to ensure the cards are not cut off */
+  }
+  
+  .cta-btn {
+      padding: 6px 12px;
+      font-size: 14px;
+  }
+  
+  footer {
+      padding: 0.8rem;
+      font-size: 0.8rem;
+  }
+}

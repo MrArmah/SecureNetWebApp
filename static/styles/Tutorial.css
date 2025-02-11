@@ -1,0 +1,140 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f0ffe6;
+    color: #3d5c2c;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content-wrapper {
+    flex: 1;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #3d5c2c;
+    color: white;
+    padding: 0.7rem 0;
+    position: sticky;
+    top: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    animation: slideDown 1s ease-out;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    margin: 0 1rem;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #99cc00;
+}
+
+/*active Page*/
+.active {
+    background-color: yellow;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
+
+/* Header */
+header {
+    text-align: center;
+    padding: 2rem;
+    background-color: #cce8b3;
+    animation: fadeIn 2s ease-in-out;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+header p {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+}
+
+/* Main Content */
+main {
+    padding: 2rem;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.video-tutorials, .text-guides {
+    margin-bottom: 2rem;
+}
+
+.video-placeholder, .file-placeholder {
+    background-color: #e0ffd1;
+    text-align: center;
+    padding: 2rem;
+    margin: 1rem 0;
+    font-style: italic;
+    color: #555;
+    border: 2px dashed #3d5c2c;
+}
+
+/* Footer */
+footer {
+    background-color: #3d5c2c;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto;
+}
+
+
+/* Keyframe Animations */
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes bounceIn {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}

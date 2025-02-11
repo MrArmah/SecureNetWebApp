@@ -1,0 +1,271 @@
+/* ========================================
+   Global Reset & Base Styles
+======================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #eef5e0;
+  color: #3d5c2c;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ========================================
+   Background Video
+======================================= */
+#background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -10;
+}
+
+/* ========================================
+   Navbar & Toggle Elements
+======================================= */
+.navbar {
+  width: 100%;
+  background-color: #3d5c2c;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+  margin: 0;
+}
+
+.navbar li {
+  margin: 0.5rem 1.2rem;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+  color: #99cc00;
+}
+
+/* Active page indicator */
+.active::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #9dc035;
+  position: relative;
+  top: 5px;
+}
+
+/* Hide the toggle checkbox (used for CSS-only toggling) */
+.nav-toggle {
+  display: none;
+}
+
+/* Toggle label (hamburger icon) styling */
+.nav-toggle-label {
+  display: none;
+  background-color: #3d5c2c;
+  color: white;
+  padding: 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+
+/* ========================================
+   Chat Container & Chat Box
+======================================= */
+.chat-container {
+  width: 95%;
+  max-width: 900px;
+  /* Allocate space between the fixed navbar (approx. 100px) and footer (approx. 80px) */
+  height: calc(100vh - 180px);
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 80px; /* Space for the fixed navbar */
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.chat-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+/* ========================================
+   Message Bubble Styles
+======================================= */
+.message {
+  max-width: 70%;
+  padding: 12px;
+  border-radius: 15px;
+  margin: 10px 0;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+.ai-message {
+  background: #f1f1f1;
+  color: black;
+  text-align: left;
+}
+
+.user-message {
+  background: #018101;
+  color: white;
+  align-self: flex-end;
+  text-align: right;
+}
+
+/* ========================================
+   Chat Form
+======================================= */
+form {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+form input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+form button {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+form button:hover {
+  background: #218838;
+}
+
+/* ========================================
+   Footer
+======================================= */
+.footer {
+  background-color: rgba(61, 92, 44, 0.9);
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  width: 100%;
+  /* On larger screens, the footer remains fixed */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* ========================================
+   Responsive Styles
+======================================= */
+
+/* Tablets & Small Laptops (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  /* Display the hamburger toggle label (force display) */
+  .nav-toggle-label {
+    display: block !important;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 10001; /* Above the navbar */
+    background: #3d5c2c;
+    padding: 0.7rem 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white !important;
+  }
+  /* Hide the navbar menu by default and show as a column when toggled */
+  .navbar ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #3d5c2c;
+  }
+  /* When the toggle is checked, show the menu with extra top margin */
+  .nav-toggle:checked + .nav-toggle-label + .navbar ul {
+    display: flex;
+    margin-top: 50px; /* Push the menu down so all items are visible */
+  }
+  .navbar a {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+  /* Adjust chat container margin to ensure no overlap with the toggle */
+  .chat-container {
+    margin-top: 120px;
+  }
+}
+
+/* Smartphones (max-width: 480px) */
+@media screen and (max-width: 480px) {
+  /* Change footer to static so it doesn't overlay the chat container or the keyboard */
+  .footer {
+    position: static;
+  }
+  .chat-container {
+    width: 100%;
+    height: calc(100vh - 180px);
+    margin-top: 140px;
+    padding: 10px;
+  }
+  .chat-box {
+    padding: 8px;
+  }
+  .message {
+    font-size: 12px;
+    padding: 8px;
+  }
+  form input {
+    font-size: 12px;
+    padding: 8px;
+  }
+  form button {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+}

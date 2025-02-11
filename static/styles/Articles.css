@@ -1,0 +1,164 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f0ffe6; /* Same background as Home Page */
+    color: #3d5c2c; /* Same color as Home Page */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content-wrapper {
+    flex: 1;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #3d5c2c; /* Same navbar color as Home Page */
+    color: white;
+    padding: 0.7rem 0;
+    position: sticky;
+    top: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    animation: slideDown 1s ease-out;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    margin: 0 1rem;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #99cc00; /* Same hover color as Home Page */
+}
+
+/*active Page*/
+.active {
+    background-color: yellow;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
+
+/* Header */
+header {
+    text-align: center;
+    padding: 2rem;
+    background-color: #cce8b3; /* Light green background */
+    animation: fadeIn 2s ease-in-out;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+header p {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+}
+
+/* Main Content */
+main {
+    padding: 2rem;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.article-preview {
+    background-color: #e6f7d3; /* Light background for each article preview */
+    border: 1px solid #cce8b3;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+}
+
+.article-preview h2 {
+    font-size: 2rem;
+    color: #3d5c2c;
+}
+
+
+
+.read-more {
+    font-size: 1.1rem;
+    color: #3d5c2c;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem;
+    background-color: #99cc00;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.read-more:hover {
+    background-color: #7db800;
+}
+
+/* Footer */
+footer {
+    background-color: #3d5c2c;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto;
+}
+
+
+/* Keyframe Animations */
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes bounceIn {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.article-preview:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+.summary {
+    font-size: 1rem;
+    margin: 1rem 0;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Policies & Configurations</title>
+  <link rel="stylesheet" href="../static/styles/Security.css">
+</head>
+<body>
+  <!-- Responsive Navbar Toggle -->
+  <input type="checkbox" id="nav-toggle" class="nav-toggle">
+  <label for="nav-toggle" class="nav-toggle-label">&#9776;</label>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="{{ url_for('Home')}}" class="{% if request.endpoint == 'Home' %}active{% endif %}">Home</a></li>
+      <li><a href="{{ url_for('Tools')}}" class="{% if request.endpoint == 'Tools' %}active{% endif %}">Tools & Resources</a></li>
+      <li><a href="{{ url_for('News')}}" class="{% if request.endpoint == 'News' %}active{% endif %}">News & Updates</a></li>
+      <li><a href="{{ url_for('Security')}}" class="{% if request.endpoint == 'Security' %}active{% endif %}">Security Policies</a></li>
+      <li><a href="{{ url_for('Chat')}}" class="{% if request.endpoint == 'Chat' %}active{% endif %}">AI</a></li>
+    </ul>
+  </nav>
+
+  <div class="content-wrapper">
+    <header>
+      <h1>Security Policies & Configurations</h1>
+      <p>Understanding the configurations and frameworks applied in securing networks.</p>
+    </header>
+    <main>
+      <section class="security-overview">
+        <h2>DISA STIG Configurations</h2>
+        <p>
+          The Defense Information Systems Agency (DISA) Security Technical Implementation Guides (STIGs) provide configuration standards for securely configuring various systems. The application of STIGs ensures that security requirements are met for military and government IT systems. Key focus areas include:
+        </p>
+        <ul>
+          <li>System hardening and minimizing the attack surface.</li>
+          <li>Implementation of strong password policies and user authentication methods.</li>
+          <li>Proper logging and monitoring configurations for auditing system activities.</li>
+          <li>Security patches and updates management to prevent exploitation of known vulnerabilities.</li>
+        </ul>
+      </section>
+      <section class="rmf-configurations">
+        <h2>Risk Management Framework (RMF)</h2>
+        <p>
+          The RMF is a structured process for managing cybersecurity risk and ensuring systems comply with necessary security controls. It involves continuous monitoring, assessment, and security configuration implementation, such as:
+        </p>
+        <ul>
+          <li>Security categorization and classification of systems to identify security requirements.</li>
+          <li>Selection and implementation of security controls based on the system's security needs.</li>
+          <li>Continuous monitoring for detecting and mitigating potential threats or vulnerabilities.</li>
+          <li>Security authorization and risk assessment to ensure all vulnerabilities are managed appropriately.</li>
+        </ul>
+      </section>
+      <section class="compliance-standards">
+        <h2>Compliance with NIST and Other Frameworks</h2>
+        <p>
+          In addition to DISA STIGs and RMF, it is important to follow the National Institute of Standards and Technology (NIST) frameworks such as the NIST Cybersecurity Framework (CSF) and NIST SP 800-53. These standards ensure that security controls align with industry best practices and governmental regulations. Some of the NIST cybersecurity controls applied include:
+        </p>
+        <ul>
+          <li>Access control policies for securing sensitive data.</li>
+          <li>Incident response and disaster recovery plans to ensure business continuity.</li>
+          <li>System integrity checks and security auditing practices to identify irregularities.</li>
+          <li>Encryption protocols for securing data in transit and at rest.</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 SecureNet | Security Policies</p>
+    </div>
+  </footer>
+</body>
+</html>
