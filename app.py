@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, jsonify, json, session
+from flask import Flask, render_template, redirect, request, jsonify, json, session, send_from_directory
 from flask_scss import Scss
 from flask_sqlalchemy import SQLAlchemy 
 from datetime import datetime
@@ -98,6 +98,9 @@ def fetch_news():
 
 Scss(app)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config["UPLOAD_FOLDER"] = "uploads"
+
 db = SQLAlchemy(app)
 
 
@@ -109,18 +112,33 @@ def Home():
 @app.route("/tools", methods=["GET"])
 def Tools():
         db.session.expire_all()  # Refresh session
-        query = request.args.get("search")
+           # Handle search for STIGs
+        stig_query = request.args.get("search_stig")
+        if stig_query:
+            servers = STIG.query.filter(
+                (STIG.server_name.ilike(f"%{stig_query}%"))
+                ).all()
+        else:
+            servers = STIG.query.all()
     
-        if query:
+
+ # Handle search for Tools
+        tools_query = request.args.get("search_tools")
+        if tools_query:
             items = My_Tools.query.filter(
-                (My_Tools.Name.ilike(f"%{query}%")) |
-                (My_Tools.Application.ilike(f"%{query}%")) |
-                (My_Tools.Description.ilike(f"%{query}%"))
+                (My_Tools.Name.ilike(f"%{tools_query}%")) |
+                (My_Tools.Application.ilike(f"%{tools_query}%")) |
+                (My_Tools.Description.ilike(f"%{tools_query}%"))
             ).all()
         else:
             items = My_Tools.query.all()
-    
-        return render_template("Tools.html", items=items, search_query=query)
+        
+        return render_template(
+            "Tools.html", 
+            servers=servers, search_stig_query=stig_query,
+            items=items, search_tools_query=tools_query
+        )
+
 
 @app.route("/news", methods=["GET", "POST"])
 def News():
@@ -138,7 +156,7 @@ def Security():
 
 
 
-#Data Class ~ Row of Data
+#Database for Tools
 class My_Tools(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     Name= db.Column(db.String(100), nullable=False)
@@ -153,6 +171,23 @@ class My_Tools(db.Model):
     def __repr__(self) -> str:
         return f"Task {self.id}"
     
+
+
+#Database for Resources
+
+class STIG(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    server_name = db.Column(db.String(200), nullable=False)
+    recommended_stig = db.Column(db.String(200), nullable=False)
+
+
+@app.route("/download/<filename>")
+def download_file(filename):
+    """Serve STIG ZIP file for download."""
+    stig_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
+    if os.path.exists(stig_path):
+        return send_from_directory(app.config["UPLOAD_FOLDER"], filename, as_attachment=True)
+    return "File not found", 404
 
 
 

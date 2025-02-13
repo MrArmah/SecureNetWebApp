@@ -28,8 +28,8 @@
       <h1>Tools & Resources</h1>
       <p>Explore a curated collection of tools and resources for secure networking.</p>
       <!-- Search Form inside header -->
-      <form action="{{ url_for('Tools') }}" method="get" class="search-form">
-        <input type="text" name="search" placeholder="Search Tool..." value="{{ search_query or '' }}">
+      <form action="/tools" method="get" class="search-form">
+        <input type="text" name="search_tools" placeholder="Search Tool..." value="{{ search_tools_query or '' }}">
         <button type="submit">Search</button>
       </form>
     </header>
@@ -72,16 +72,60 @@
                 </tr>
               {% endfor %}
             {% else %}
-              <p class="no-results">No results found for "{{ search_query }}".</p>
+              <p class="no-results">No results found for "{{ search_tools_query }}".</p>
             {% endif %}
           </tbody>
         </table>
       </div>
       
       <section class="resources-section">
-        <h2>Resources</h2>
+        <h1>Resources</h1>
         <p>Secure Technical Implementation Guide (STIG)</p>
+        <h3>The table below provides downloadable zip files of DISA STIGs for various devices, networks  and servers: <br> <h4>Your STIG is just a click away📈</h4></h3>
+        <form method="GET" action="/tools" class="search-form">
+          <div class="search-container">
+              <input type="text" name="search_stig" placeholder="Search Stig..." value="{{ search_stig_query or '' }}">
+              <button type="submit" class="search-btn">Search</button>
+          </div>
+        </form>
+        <br>
+        <br>
       </section>
+
+
+      <div class="table-container">
+        <table class="tools-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Server</th>
+              <th>Recomended STIG</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if servers %}
+              {% for server in servers %}
+                <tr>
+                  <td scope="col">{{ server.id }}</td>
+                  <td scope="col">{{ server.server_name }}</td>
+                  <td>
+                    <a href="{{ url_for('download_file', filename=server.recommended_stig) }}" download>
+                      <button class="Download-btn">Download</button>
+                    </a>
+                  </td>
+                </tr>
+              {% endfor %}
+            {% else %}
+              <p class="no-results">No results found for "{{ search_stig_query }}".</p>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    
+
+
+
+
     </main>
   </div>
 

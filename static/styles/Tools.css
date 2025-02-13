@@ -183,8 +183,21 @@ header p {
 
 .resources-section {
     margin-top: 2rem;
+    text-align: center;
+    background-color: #cce8b3;
 }
-
+.resources-section h1 {
+    font-size: 2rem;
+}
+.resources-section p {
+    font-weight: 700;
+}
+.resources-section h3 {
+    font-size: 1rem;
+}
+.resources-section h4 {
+    font-family: Arial, Helvetica, sans-serif;
+}
 /* ===============================
    Button Styling
 =============================== */
